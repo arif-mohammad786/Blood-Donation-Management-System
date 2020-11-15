@@ -1,0 +1,39 @@
+<script>
+
+    $("#adminlogin").click(function(){
+        let eml=$("#email").val();
+        let pwd=$("#password").val();
+        let csr=$("input[name='csrfmiddlewaretoken']").val();
+        if(eml==""){
+            $("#msg").html("<h5 class='text-warning'>Please Enter Email ID</h5>");
+        }
+        else if(pwd==""){
+            $("#msg").html("<h5 class='text-warning'>Please Enter password</h5>");
+        }else{
+        mydata={email:eml,password:pwd,csrfmiddlewaretoken:csr};
+        $.ajax({
+            url:"{% url 'adminlogin' %}",
+            method:"POST",
+            data:mydata,
+            success:function(data){
+                if(data.status == 1){
+                    window.location.href="{% url 'dashboard' %}";
+                }
+                else if(data.status == 0){
+                    $("#msg").html("<h5 class='text-danger'>Enter Valid Email ID and Password</h5>");
+                    
+                }
+                else if(data.status == 2){
+                    console.log(data.status);
+                    window.location.href="{% url 'home' %}";
+                }
+                else if(data.status == 3){
+                    window.location.href="{% url 'dashboard' %}";
+                }
+            }
+        })
+        }
+       
+    });
+
+</script>

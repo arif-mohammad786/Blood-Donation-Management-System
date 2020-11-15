@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'core/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/bdms.css' %}">
+    <title>{{title}}</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color:#8a817c;">
+    <a class="navbar-brand" href="{% url 'home' %}">BDMS
+    <img src="{% static 'core/images/img1.png' %}" width="50px" height="50px">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown" style="margin-right:60px;">
+				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+				<i class="fas fa-user mr-2"></i>{{name}}</a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="{% url 'changepass' %}"><i class="fas fa-cog mr-2"></i>Settings</a>
+					<div role="separator" class="dropdown-divider"></div>
+					<a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt mr-2"></i>Logout</a>
+				</div>
+			</li>
+        </ul>
+    </div>
+    </nav>
+
+    <div class="container-fluid" style="margin-top:90px;">
+        <h3 class="text-secondary text-right font-weight-bold alert alert-light shadow-sm">{{heading}}</h3>
+        <div class="row">
+            <div class="col-sm-4  col-md-3 col-lg-2 bg-secondary shadow sidenavbar sidebarht" id="sidebar">
+                <ul style="list-style:none;">
+                    <li><a {% if title == 'dashboard' %}style="background-color:#8a817c;padding:5px 15px;"{% endif %} href="{% url 'dashboard' %}" class="font-weight-bold"><i class="fas fa-tachometer-alt mr-3"></i>Dashboard</a></li>
+                    <li><a {% if title == 'Add Donar' %}style="background-color:#8a817c;padding:5px 15px;"{% endif %} href="{% url 'adddonar' %}" class="font-weight-bold"><i class="fas fa-plus mr-3"></i>Add Donar</a></li>
+                    <li><a {% if title == 'Donar List' %}style="background-color:#8a817c;padding:5px 15px;"{% endif %} href="{% url 'donarlist' %}" class="font-weight-bold"><i class="fas fa-list mr-3"></i>Donar List</a></li>
+                    <li><a {% if title == 'Query List' %}style="background-color:#8a817c;padding:5px 15px;"{% endif %} href="{% url 'querylist' %}" class="font-weight-bold"><i class="fab fa-acquisitions-incorporated mr-3"></i>Manage Query</a></li>
+                    <li><a {% if title == 'Update Contact Us' %}style="background-color:#8a817c;padding:5px 15px;"{% endif %} href="{% url 'updatecontactus' %}" class="font-weight-bold"><i class="fas fa-id-card mr-3"></i>Update Contact Us</a></li>
+                    <li><a {% if title == 'Update About Us' %}style="background-color:#8a817c;padding:5px 15px;"{% endif %} href="{% url 'updateaboutus' %}" class="font-weight-bold"><i class="fas fa-address-card mr-3"></i>Update About Page</a></li>
+                </ul>
+            </div>
+        </div>
+    

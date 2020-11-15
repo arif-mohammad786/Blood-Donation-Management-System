@@ -1,0 +1,22 @@
+{% load static %}
+
+{% include 'adminuser/header.html' %}
+
+<div class="col-sm-8  main">
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-md-8 mb-5">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                    <div id="message" class="mb-3"></div>
+                        <textarea class="form-control" id="newaboutus" rows=4 placeholder="New About Us Details ??"></textarea>
+                    </div>
+                <button class="btn btn-primary" name="updateaboutus" id="updateaboutus">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'adminuser/footer.html' %}

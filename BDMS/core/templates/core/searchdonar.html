@@ -1,0 +1,72 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block title %}
+Search Dobnar
+{% endblock title %}
+
+{% block navigationbar %}
+    {% include 'core/navbar.html' %}
+{% endblock navigationbar %}
+
+{% block content %}
+    <div class="container">
+        <h3 class="font-weight-bold text-secondary" style="margin-top:100px;">Search Donar</h3>
+        <div class="row">
+            <div class="col-sm-4">
+                <form action="" method="POST">
+                {% csrf_token %}
+                    <div class="form-group">
+                        <label for="searchgroup">Select Blood Group</label>
+                        <select class="form-control" name="searchgroup" id="searchgroup" required>
+                            <option>A+</option>
+                            <option>A-</option>
+                            <option>B+</option>
+                            <option>B-</option>
+                            <option>AB+</option>
+                            <option>AB-</option>
+                            <option>O+</option>
+                            <option>O-</option>
+                        </select>
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Search">
+                </form>
+            </div>
+        </div>
+        <div class="row">
+        {% if request.method == 'POST' %}
+
+            {% if donars %}
+                {% for donar in donars %}
+                    <div class="col-sm-5 col-md-4 my-5">
+                    <div class="card" >
+                        <img src="{{donar.image.url}}" class="card-img-top" alt="image" height="250px">
+                        <div class="card-body">
+                            <h4 class="card-title text-secondary">{{donar.name}}</h4>
+                            <p class="card-text"><span class="font-weight-bold">mob. No. :</span> {{donar.phone}}</p>
+                            <p class="card-text"><span class="font-weight-bold">Email ID :</span> {{donar.email}}</p>
+                            <p class="card-text"><span class="font-weight-bold">Age :</span> {{donar.age}}</p>
+                            <p class="card-text"><span class="font-weight-bold">Blood Group :</span> {{donar.bgroup}}</p>
+                            <p class="card-text"><span class="font-weight-bold">Address :</span> {{donar.address}}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% elif count == 0%}
+            <div class="container text-center">
+                <h3 class="text-secondary font-weight-bold">0 Results Found</h3>
+            </div>
+            {% endif %} 
+
+        {% endif %}
+            
+        </div>
+    </div>
+
+{% endblock content %}
+
+
+{% block footer %}
+    {% include 'core/footer.html' %}
+{% endblock footer %}

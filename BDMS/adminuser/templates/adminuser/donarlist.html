@@ -1,0 +1,46 @@
+{% load static %}
+
+{% include 'adminuser/header.html' %}
+
+<div class="col-sm-10  main">
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <table class="table table-hover border">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Phone No.</th>
+                            <th>Email ID</th>
+                            <th>Age</th>
+                            <th>Gender</th>
+                            <th>Blood Group</th>
+                            <th>Address</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for donar in donars %}
+                            <tr>
+                                <td>{{donar.id}}</td>
+                                <td><img src="{{donar.image.url}}" width="100px" height="100px"></td>
+                                <td>{{donar.name}}</td>
+                                <td>{{donar.phone}}</td>
+                                <td>{{donar.email}}</td>
+                                <td>{{donar.age}}</td>
+                                <td>{{donar.gender}}</td>
+                                <td>{{donar.bgroup}}</td>
+                                <td>{{donar.address}}</td>
+                                <td><a href="{% url 'deletedonar' donar.id %}"><i class="fas fa-trash-alt fa-lg" style="color:red;"></i></a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'adminuser/footer.html' %}

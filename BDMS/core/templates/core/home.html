@@ -1,0 +1,172 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block navigationbar %}
+    {% include 'core/navbar.html' %}
+{% endblock navigationbar %}
+
+{% block content %}
+    <div class="container-fluid jumbotron navimage img-thumbnail" style="background-image:url('/static/core/images/img2.jpg');">
+    </div>
+    <div class="container">
+        <h2 class="text-center font-weight-bold text-secondary">Welcome To BloodBank  &  Donar  Management System</h2>
+        <div class="row">
+            <div class="col-sm-4 my-5">
+                <div class="card">
+                    <h4 class="card-header text-center">The Need For Blood</h4>
+                    <div class="card-body">
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur, 
+                        adipisicing elit. Est, eos. Asperiores accusamus
+                         fugiat ipsum amet suscipit. Dignissimos dicta dolore iure.</p>
+                    </div>  
+                </div>
+            </div>
+            <div class="col-sm-4 my-5">
+                <div class="card">
+                    <h4 class="card-header text-center">Blood Tips</h4>
+                    <div class="card-body">
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur, 
+                        adipisicing elit. Est, eos. Asperiores accusamus
+                         fugiat ipsum amet suscipit. Dignissimos dicta dolore iure.</p>
+                    </div>  
+                </div>
+            </div>
+            <div class="col-sm-4 my-5">
+                <div class="card">
+                    <h4 class="card-header text-center">Who You Could Help</h4>
+                    <div class="card-body">
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur, 
+                        adipisicing elit. Est, eos. Asperiores accusamus
+                         fugiat ipsum amet suscipit. Dignissimos dicta dolore iure.</p>
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h3 class="font-weight-bold text-secondary">Some Of The Donars</h3>
+        <div class="row">
+            {% for donar in donars %}
+                <div class="col-sm-5 col-md-4 my-5">
+                    <div class="card" >
+                        <img src="{{donar.image.url}}" class="card-img-top" alt="image" height="250px">
+                        <div class="card-body">
+                            <h4 class="card-title text-secondary">{{donar.name}}</h4>
+                            <p class="card-text"><span class="font-weight-bold">mob. No. :</span> {{donar.phone}}</p>
+                            <p class="card-text"><span class="font-weight-bold">Email ID :</span> {{donar.email}}</p>
+                            <p class="card-text"><span class="font-weight-bold">Age :</span> {{donar.age}}</p>
+                            <p class="card-text"><span class="font-weight-bold">Blood Group :</span> {{donar.bgroup}}</p>
+                            <p class="card-text"><span class="font-weight-bold">Address :</span> {{donar.address}}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+    <div class="container mb-4">
+        <h2 class="font-weight-bold text-secondary">Blood Groups</h2>
+        <div class="row">
+            <div class="col-sm-6 mt-3">
+                <h6>Blood Group of Human Being Will Fall in One of These Groups:</h6>
+                <ul>
+                    <li>A Positive OR A Negative</li>
+                    <li>B Positive OR B Negative</li>
+                    <li>O Positive OR O Negative</li>
+                    <li>AB Positive OR AB Negative</li>
+                </ul>
+                <p>A Healthy Diet helps Ensure a successfull Blood donation and also makes You 
+                Feel Better !!<br>Check Out the following Recommended food prior to Donation</p>
+            </div>
+            <div class="col-sm-6 mt-3">
+                <img src="{% static 'core/images/img3.jpg' %}" width="500px"  class="img-fluid">
+            </div>
+        </div><hr>
+    </h3>
+    <div class="container">
+        <h2 class="font-weight-bold text-secondary">Universal Donars And Recipients</h2>
+        <div class="row">
+            <div class="col-sm-8">
+                <p class="text-justify">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Iure reprehenderit, maiores tenetur consectetur velit est
+                     officiis cum rerum distinctio aliquam ratione eveniet veniam 
+                     quo ex? Atque accusamus dolor tempore veritatis aspernatur?
+                      Quos laudantium eos, excepturi reprehenderit maiores
+                       at ut ipsa illo? Eaque cumque 
+                    inventore repellat quod deserunt quae laboriosam officiis?
+                </p>
+            </div>
+            <div class="col-sm-3 offset-1" >
+                <a href="{% url 'becomedonar' %}" class="btn btn-light btn-lg border font-weight-bold" >Become a Donar</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+
+{% block footer %}
+     <div class="container-fluid mt-5" style="background-color:#8a817c;">
+        <p class="text-center font-weight-bold p-3">
+        <a href="#" class="text-white mr-4 ml-4"><i class="fab fa-facebook-f"></i> Facebook</a>
+        <a href="#" class="text-white mr-4 ml-4"><i class="fab fa-whatsapp"></i> Whatsapp</a>
+        BloodBank and Donar Management System
+        <a href="#" class="text-white mr-4 ml-4"><i class="fab fa-twitter"></i> Twitter</a>
+        <a href="#" class="text-white mr-4 ml-4"><i class="fab fa-instagram"></i> Instagram</a>
+           <!-- Button trigger modal -->
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">
+            Admin Login
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Admin Login</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                    {% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Email Id" id="email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Password" id="password" name="password">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <div id="msg"></div>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="adminlogin" name="adminlogin">Login</button>
+                </div>
+                </div>
+            </div>
+            </div>
+        </p>
+
+    </div>
+
+ 
+{% endblock footer %}
+
+{% block ajax %}
+    {% include 'core/ajax.html' %}
+{% endblock ajax %}
+
+<!--
+superuser=>username=root,password=root
+
+admin=>email=>admin@gmail.com , password=>admin
+
+-->

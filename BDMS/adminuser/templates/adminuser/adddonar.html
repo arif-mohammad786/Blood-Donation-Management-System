@@ -1,0 +1,77 @@
+{% load static %}
+
+{% include 'adminuser/header.html' %}
+
+<div class="col-sm-9  main">
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-md-12 mb-5">
+                <form action="" method="POST" class="mt-5" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <h3 class="text-success">{{message}}</h3>
+                    {% endfor %}
+                {% endif %}
+                    <div class="form-row">
+                        <div class="form-group col-sm-4">
+                            <label for="name">Full Name<i class="fas fa-star ml-1 mb-2" style="font-size:6px;color:red;"></i></label>
+                            <input type="text" class="form-control" name="name" id="name" required>
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label for="phone">Phone Number<i class="fas fa-star ml-1 mb-2" style="font-size:6px;color:red;"></i></label>
+                            <input type="number" class="form-control" name="phone" id="phone" required>
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label for="email">Email Address<i class="fas fa-star ml-1 mb-2" style="font-size:6px;color:red;"></i></label>
+                            <input type="email" class="form-control" name="email" id="email" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-sm-4">
+                            <label for="age">Age<i class="fas fa-star ml-1 mb-2" style="font-size:6px;color:red;"></i></label>
+                            <input type="number" class="form-control" name="age" id="age" required>
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label for="gender">Select Gender<i class="fas fa-star ml-1 mb-2" style="font-size:6px;color:red;"></i></label>
+                            <select class="form-control" name="gender" required>
+                                <option>Male</option>
+                                <option>Female</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label for="bgroup">Select Blood Group<i class="fas fa-star ml-1 mb-2" style="font-size:6px;color:red;"></i></label>
+                            <select class="form-control" name="bgroup" required>
+                                <option>A+</option>
+                                <option>A-</option>
+                                <option>B+</option>
+                                <option>B-</option>
+                                <option>AB+</option>
+                                <option>AB-</option>
+                                <option>O+</option>
+                                <option>O-</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-sm-6 form-group">
+                            <label for="address">Address<i class="fas fa-star ml-1 mb-2" style="font-size:6px;color:red;"></i></label>
+                            <textarea name="address" id="address" class="form-control" required></textarea>
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <label for="message">Message</label>
+                            <textarea name="message" id="message" class="form-control" ></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Upload Your Image<i class="fas fa-star ml-1 mb-2" style="font-size:6px;color:red;"></i></label>
+                        <input type="file" class="form-control-file" name="image" id="image" required>
+                    </div>
+                    <input type="submit" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'adminuser/footer.html' %}
